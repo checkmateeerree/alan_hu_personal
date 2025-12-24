@@ -17,7 +17,7 @@ const contactMethods = [
   {
     icon: FaLinkedin,
     label: "LinkedIn",
-    value: "linkedin.com/in/alan-hu-9088a5236",
+    value: "https://www.linkedin.com/in/alanhu292/",
     link: "https://www.linkedin.com/in/alan-hu-9088a5236/",
     color: "blue",
   },

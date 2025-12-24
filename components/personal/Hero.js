@@ -142,7 +142,7 @@ export default function Hero() {
           <HStack spacing={4} justify="center" flexWrap="wrap">
             <Button
               as="a"
-              href="https://linkedin.com/in/alan-hu"
+              href="https://www.linkedin.com/in/alanhu292/"
               target="_blank"
               leftIcon={<FaLinkedin />}
               size="lg"
