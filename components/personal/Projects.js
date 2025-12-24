@@ -23,7 +23,7 @@ const projects = [
     technologies: ["C++", "Python", "Alpha-Beta Pruning", "Bitboards", "Zobrist Hashing"],
     color: "purple",
     link: null,
-    award: "~12,000 NPS performance",
+    award: null,
   },
   {
     title: "TabShare",
@@ -37,11 +37,11 @@ const projects = [
   {
     title: "Locus",
     subtitle: "VR Location Scouting & Shot Planning Tool",
-    description: "Won 3rd place at Meta's AI Hackathon - a VR tool that lets content creators explore real-world locations in 3D and generate shot ideas with visual variations using Meta Quest, Cesium, and Stable Diffusion.",
+    description: "A VR tool that lets content creators explore real-world locations in 3D and generate shot ideas with visual variations using Meta Quest, Cesium, and Stable Diffusion.",
     technologies: ["VR", "Meta Quest", "Cesium", "Qwen", "Stable Diffusion", "AI"],
     color: "orange",
     link: "https://lnkd.in/e35vaKpr",
-    award: "3rd Place - AI at Meta Hackathon",
+    award: null,
   },
 ];
 
@@ -106,27 +106,14 @@ export default function Projects() {
                 }}
                 sx={{ transition: "all 0.3s" }}
               >
-                <HStack mb={3} justify="space-between" align="start">
-                  <VStack align="start" spacing={1}>
-                    <Heading as="h3" size="lg" color="gray.900">
-                      {project.title}
-                    </Heading>
-                    <Text fontSize="sm" color="gray.600" fontWeight="500">
-                      {project.subtitle}
-                    </Text>
-                  </VStack>
-                  {project.award && (
-                    <Badge
-                      colorScheme={project.color}
-                      px={3}
-                      py={1}
-                      borderRadius="full"
-                      fontSize="xs"
-                    >
-                      Trophy: {project.award}
-                    </Badge>
-                  )}
-                </HStack>
+                <VStack align="start" spacing={1} mb={3}>
+                  <Heading as="h3" size="lg" color="gray.900">
+                    {project.title}
+                  </Heading>
+                  <Text fontSize="sm" color="gray.600" fontWeight="500">
+                    {project.subtitle}
+                  </Text>
+                </VStack>
 
                 <Text color="gray.700" mb={6} lineHeight="1.8" flex={1}>
                   {project.description}
