@@ -55,15 +55,10 @@ export default function Story() {
       <Box maxW="1200px" mx="auto">
         <VStack spacing={12} align="stretch">
           <MotionBox
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ 
-              duration: 0.8,
-              type: "spring",
-              stiffness: 100,
-              damping: 15
-            }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             textAlign="center"
           >
             <Heading
@@ -92,32 +87,13 @@ export default function Story() {
             {storyChapters.map((chapter, index) => (
               <MotionFlex
                 key={chapter.title}
-                initial={{ 
-                  opacity: 0, 
-                  x: index % 2 === 0 ? -50 : 50,
-                  y: 20,
-                  scale: 0.9,
-                  rotateX: index % 2 === 0 ? -10 : 10
-                }}
-                whileInView={{ 
-                  opacity: 1, 
-                  x: 0,
-                  y: 0,
-                  scale: 1,
-                  rotateX: 0
-                }}
-                viewport={{ once: true, margin: "-100px" }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ 
-                  duration: 0.7,
-                  delay: index * 0.15,
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 12
-                }}
-                whileHover={{
-                  scale: 1.02,
-                  x: index % 2 === 0 ? 10 : -10,
-                  transition: { duration: 0.3 }
+                  duration: 0.5,
+                  delay: index * 0.1,
+                  ease: "easeOut"
                 }}
                 direction={{ base: "column", md: "row" }}
                 gap={6}
@@ -128,7 +104,7 @@ export default function Story() {
                 borderColor="gray.200"
                 boxShadow="md"
                 _hover={{
-                  boxShadow: "2xl",
+                  boxShadow: "xl",
                   borderColor: `${chapter.color}.300`,
                 }}
                 sx={{ transition: "all 0.3s" }}
@@ -140,21 +116,7 @@ export default function Story() {
                   mr={4}
                   minW="60px"
                 >
-                  <MotionBox
-                    initial={{ scale: 0, rotate: -180 }}
-                    whileInView={{ scale: 1, rotate: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ 
-                      duration: 0.6,
-                      delay: index * 0.15 + 0.2,
-                      type: "spring",
-                      stiffness: 200
-                    }}
-                    whileHover={{ 
-                      scale: 1.1,
-                      rotate: 360,
-                      transition: { duration: 0.5 }
-                    }}
+                  <Box
                     w="60px"
                     h="60px"
                     borderRadius="full"
@@ -170,62 +132,34 @@ export default function Story() {
                       h={8}
                       color={`${chapter.color}.600`}
                     />
-                  </MotionBox>
+                  </Box>
                   {index !== storyChapters.length - 1 && (
-                    <MotionBox
-                      initial={{ scaleY: 0 }}
-                      whileInView={{ scaleY: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ 
-                        duration: 0.6,
-                        delay: index * 0.15 + 0.5
-                      }}
+                    <Box
                       w="2px"
                       h="full"
                       bg={`${chapter.color}.200`}
                       flex={1}
                       minH="40px"
-                      transformOrigin="top"
                     />
                   )}
                 </Flex>
 
                 <Flex direction="column" flex={1}>
-                  <MotionBox
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ 
-                      duration: 0.5,
-                      delay: index * 0.15 + 0.3
-                    }}
-                  >
-                    <HStack spacing={3} mb={2} flexWrap="wrap">
-                      <Heading as="h3" size="md" color="gray.900">
-                        {chapter.title}
-                      </Heading>
-                      <Text
-                        fontSize="sm"
-                        color={`${chapter.color}.600`}
-                        fontWeight="600"
-                      >
-                        {chapter.period}
-                      </Text>
-                    </HStack>
-                  </MotionBox>
-                  <MotionBox
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ 
-                      duration: 0.5,
-                      delay: index * 0.15 + 0.4
-                    }}
-                  >
-                    <Text color="gray.700" lineHeight="1.8" fontSize={{ base: "sm", md: "md" }}>
-                      {chapter.content}
+                  <HStack spacing={3} mb={2} flexWrap="wrap">
+                    <Heading as="h3" size="md" color="gray.900">
+                      {chapter.title}
+                    </Heading>
+                    <Text
+                      fontSize="sm"
+                      color={`${chapter.color}.600`}
+                      fontWeight="600"
+                    >
+                      {chapter.period}
                     </Text>
-                  </MotionBox>
+                  </HStack>
+                  <Text color="gray.700" lineHeight="1.8" fontSize={{ base: "sm", md: "md" }}>
+                    {chapter.content}
+                  </Text>
                 </Flex>
               </MotionFlex>
             ))}
